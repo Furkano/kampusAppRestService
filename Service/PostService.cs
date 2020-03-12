@@ -21,12 +21,20 @@ namespace noname.Services
             _uow = new UnitOfWork();
         }
 
-        public async Task<List<PostDTO>> GetAll(string text, int page, int offset)
+        public async Task<List<PostDTO>> GetAll(string text,int category, int page, int offset)
         {
             return (await _uow.Repository<Post>()
-                .Where(p => (text != null ? p.Body.Contains(text) : true))
+                .Where(p => (text != null ? p.Body.Contains(text):true) && (category!=0 ? p.PostAdvertisement.CategoryId==category : true))
                 .Include(p => p.User)
+                .Include(p=>p.PostAdvertisement)
+                .Include(p=>p.PostAdvertisement.PostAdvertisementEstate)
+                .Include(p => p.PostAdvertisement.PostAdvertisementEvent)
+                .Include(p => p.PostAdvertisement.PostAdvertisementJob)
+                .Include(p => p.PostAdvertisement.PostAdvertisementResidence)
+                .Include(p => p.PostAdvertisement.PostAdvertisementStuff)
                 .Include(p => p.User.Role)
+                .Include(p => p.PostImages)
+                .Include(p=>p.PostAdvertisement.Category)
                 .Skip((page - 1) * offset)
                 .Take(offset)
                 .OrderByDescending(p => p.CreateDate)

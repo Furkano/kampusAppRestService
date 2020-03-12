@@ -10,9 +10,11 @@ using noname.Services;
 using Mapster;
 using noname.Service;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 
 namespace noname.Controllers
 {
+    [EnableCors("AllowAll")]
     [Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
     [ApiController]
     [Authorize]

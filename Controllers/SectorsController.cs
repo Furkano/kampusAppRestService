@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Mapster;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using noname.Data.Entities;
@@ -12,9 +13,10 @@ using noname.Service;
 
 namespace noname.Controllers
 {
+    [EnableCors("AllowAll")]
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class SectorsController : ControllerBase
     {
         readonly SectorService  sectorService = null;

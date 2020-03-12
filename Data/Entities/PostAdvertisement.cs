@@ -9,6 +9,7 @@ namespace noname.Data.Entities
         public string Header { get; set; }
         public int CategoryId { get; set; }
 
+        public virtual Category Category { get; set; }
         public PostAdvertisementEstate PostAdvertisementEstate { get; set; }
         public PostAdvertisementEvent PostAdvertisementEvent { get; set; }
         public PostAdvertisementJob PostAdvertisementJob { get; set; }

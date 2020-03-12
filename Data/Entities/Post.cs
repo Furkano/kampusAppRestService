@@ -13,6 +13,7 @@ namespace noname.Data.Entities
         public DateTime EditDate { get; set; }
 
         public virtual User User { get; set; }
+        public virtual List<PostImage> PostImages { get; set; }
         public  PostAdvertisement PostAdvertisement { get; set; }
     }
 }

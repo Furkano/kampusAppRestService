@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Mapster;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using noname.Data.Entities;
@@ -13,6 +14,7 @@ using noname.Services;
 
 namespace noname.Controllers
 {
+    [EnableCors("AllowAll")]
     [Route("api/[controller]")]
     [ApiController]
     //[Authorize]
@@ -29,11 +31,11 @@ namespace noname.Controllers
         }
 
         [HttpGet("GetAll")]
-        public async Task<ResponceModel> GetAll([FromQuery(Name = "text")] string text , [FromQuery(Name = "page")] int page = 1,[FromQuery(Name = "offset")] int offset = 10)
+        public async Task<ResponceModel> GetAll([FromQuery(Name = "text")] string text , [FromQuery(Name = "category")] int category, [FromQuery(Name = "page")] int page = 1,[FromQuery(Name = "offset")] int offset = 20)
         {
             try
             {
-                var posts = await postService.GetAll(text, page, offset);
+                var posts = await postService.GetAll(text, category, page, offset);
 
                 return new ResponceModel(200, "OK", posts, null);
             }

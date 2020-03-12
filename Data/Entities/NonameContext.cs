@@ -18,6 +18,7 @@ namespace noname.Data.Entities
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<CompanyType> CompanyType { get; set; }
         public virtual DbSet<Entry> Entry { get; set; }
+        public virtual DbSet<ShowCase> ShowCase { get; set; }
         public virtual DbSet<EntryLike> EntryLike { get; set; }
         public virtual DbSet<EstateType> EstateType { get; set; }
         public virtual DbSet<GenderType> GenderType { get; set; }
@@ -75,6 +76,30 @@ namespace noname.Data.Entities
 
                 entity.Property(e => e.UpperCategoryId)
                     .HasColumnName("upperCategoryId")
+                    .HasColumnType("int(11)");
+            });
+            modelBuilder.Entity<ShowCase>(entity =>
+            {
+                entity.ToTable("showcase");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.IsPopular)
+                    .HasColumnName("isPopular")
+                    .HasColumnType("tinyint(3)");
+
+                entity.Property(e => e.IsSpecial)
+                    
+                    .HasColumnName("isSpecial")
+                    .HasColumnType("tinyint(3)");
+
+                entity.Property(e => e.IsSuggested)
+                    .HasColumnName("isSuggested")
+                    .HasColumnType("tinyint(3)");
+                entity.Property(e => e.PostId)
+                    .HasColumnName("postId")
                     .HasColumnType("int(11)");
             });
 
