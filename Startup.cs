@@ -37,9 +37,9 @@ namespace noname
                         ValidateAudience = true,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        ValidIssuer = "erenarslan34",
-                        ValidAudience = "erenarslan34",
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("eren-arslan-34-eren-arslan-34"))
+                        ValidIssuer = "furkansoysal10",
+                        ValidAudience = "furkansoysal10",
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("furka-soysal-10-furka-soysal-10"))
                     };
                 });
             services.AddCors(options =>
